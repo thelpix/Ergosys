@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bvsql51mmyuxw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2mb70"]
+
+[node name="ZoneMap" type="Node2D" unique_id=845921856]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=964494047]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=932803024]
+shape = SubResource("CircleShape2D_2mb70")
+debug_color = Color(0, 0.6, 0.7019608, 0.41960785)

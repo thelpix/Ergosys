@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dytn4ait4w0hv"]
+
+[ext_resource type="Script" uid="uid://dbfj8iuqudwjp" path="res://systems/solar_system/SolarSystem.cs" id="1_b83yl"]
+[ext_resource type="PackedScene" uid="uid://bgxjwa8i2daoc" path="res://systems/solar_system/ZoneMap.tscn" id="2_b83yl"]
+
+[node name="SolarSystem" type="Node2D" unique_id=1917630117]
+script = ExtResource("1_b83yl")
+
+[node name="ZoneMap" parent="." unique_id=845921856 instance=ExtResource("2_b83yl")]

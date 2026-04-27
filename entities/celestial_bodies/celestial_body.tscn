@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://3fgwruwj38gu"]
+
+[ext_resource type="Texture2D" uid="uid://32p3sfvv5pt2" path="res://entities/celestial_bodies/sun.png" id="1_rt51p"]
+[ext_resource type="Script" uid="uid://5nlvkjdt2nvs" path="res://entities/celestial_bodies/CelestialBody.cs" id="1_wpcjk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yus4y"]
+radius = 39.012817
+
+[node name="CelestialBody" type="Node2D" unique_id=318160365]
+script = ExtResource("1_wpcjk")
+Resources = Array[Object]([])
+
+[node name="Body" type="Sprite2D" parent="." unique_id=974019526]
+texture = ExtResource("1_rt51p")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=2072024790]
+
+[node name="CollishionShape" type="CollisionShape2D" parent="Hitbox" unique_id=1851382190]
+shape = SubResource("CircleShape2D_yus4y")

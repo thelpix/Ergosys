@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bgxjwa8i2daoc"]
+
+[ext_resource type="Script" uid="uid://f1fpgoadp8ps" path="res://systems/solar_system/ZoneMap.cs" id="1_6lfim"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2mb70"]
+
+[node name="ZoneMap" type="Node2D" unique_id=845921856]
+script = ExtResource("1_6lfim")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=964494047]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=932803024]
+shape = SubResource("CircleShape2D_2mb70")
+debug_color = Color(0, 0.6, 0.7019608, 0.41960785)

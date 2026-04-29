@@ -42,12 +42,12 @@ public class CelestialBodyBuilderMainStar : ICelestialBodyBuilder
     public void BuildPhysicalProperties()
     {
         // Implementation for building physical properties of the main star
-        _celestialBody.Speed = 0;
-        _celestialBody.Mass = 1000; //temporal
-        _celestialBody.Radius = 100; //temporal
-        _celestialBody.GravitationalField = 100; //temporal
-        _celestialBody.RotationAngle = 0;
-        _celestialBody.RotationSpeed = 0.1f; //temporal
+        _celestialBody.SetSpeed(0);
+        _celestialBody.SetMass(1000); //temporal
+        _celestialBody.SetRadius(100); //temporal
+        _celestialBody.SetGravitationalField(100); //temporal
+        _celestialBody.SetRotationAngle(0); //temp
+        _celestialBody.SetRotationSpeed(0.1f); //temporal
     }
 
     public void BuildResources()

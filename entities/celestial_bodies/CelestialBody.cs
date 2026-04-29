@@ -8,7 +8,7 @@ public partial class CelestialBody : Node2D
     [ExportGroup("Identifiers")]
     [Export] public string Id = Guid.NewGuid().ToString();
     [Export] public new string Name;
-    [Export] public CelestialBodyType Type;
+    public CelestialBodyType Type;
     [Export] public Node2D Parent; // the parent body this is orbiting around, null if none
     [Export] public Node2D[] Children; // the bodies orbiting around this, empty if non
     public CelestialBodyState CurrentState; // the current state of the body, it will determine its behavior and interactions
@@ -16,7 +16,17 @@ public partial class CelestialBody : Node2D
     private Temperature temperature;
     private Colony Colony = null;
     private Orbit Orbit; // the orbit of this body, it will determine its position and movement around its parent
-    private Resource[] Resources;
+    private Resources[] Resources;
+    //Physical properties
+    [ExportGroup("Physical Properties")]
+    [Export]private float Speed;
+    [Export]private float Mass;
+    [Export]private int Radius;
+    [Export]private float GravitationalField;
+    [Export]private float RotationAngle;
+    [Export]private float RotationSpeed;
+
+
     //Children that works as the sprite2D of this object (Node2D)
 
     public override void _Ready()
@@ -54,6 +64,42 @@ public partial class CelestialBody : Node2D
     public void SetOrbit(Orbit orbit)
     {
         Orbit = orbit;
+    }
+    public void SetResources(Resources[] resources)
+    {
+        Resources = resources;
+    }
+    public void SetTemperature(Temperature temp)
+    {
+        temperature = temp;
+    }
+    public void SetColony(Colony colony)
+    {
+        Colony = colony;
+    }
+    public void SetSpeed(float speed)
+    {
+        Speed = speed;
+    }
+    public void SetMass(float mass)
+    {
+        Mass = mass;
+    }
+    public void SetRadius(int radius)
+    {
+        Radius = radius;
+    }
+    public void SetGravitationalField(float gravitationalField)
+    {
+        GravitationalField = gravitationalField;
+    }
+    public void SetRotationAngle(float rotationAngle)
+    {
+        RotationAngle = rotationAngle;
+    }
+    public void SetRotationSpeed(float rotationSpeed)
+    {
+        RotationSpeed = rotationSpeed;
     }
 
 

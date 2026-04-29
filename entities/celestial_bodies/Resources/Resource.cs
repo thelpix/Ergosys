@@ -1,10 +1,8 @@
-using Godot;
 using System;
 
-[GlobalClass]
-public partial class ResourceDeposit : Resource
+public class Resource
 {
-    //list of resources that can be extracted from a celestial body
+    //what resource is
     public enum ResourceType
     {
         Energy,
@@ -12,10 +10,22 @@ public partial class ResourceDeposit : Resource
         Food
     }
     //variables
-    [Export]public ResourceType Type;
-    [Export]public float RichnessRate; //extraction speed multiplier
+    public ResourceType Type;
+    public int Richness;
     private int MaxConcurrentShips; //max limit about how much ships can extract the resource
     private int CurrentShipsOn;
+    //getters
+    public int GetRichness() => Richness;
+    public int GetResourceType() => (int) Type;
+    //setters
+    public void SetResourceType(ResourceType type)
+    {
+        Type = type;
+    }
+    public void SetRichness(int richness)
+    {
+        Richness = richness;
+    }
     //checkers
     public bool HasCapacity => CurrentShipsOn < MaxConcurrentShips;
     public float FillRatio => (float) (CurrentShipsOn/MaxConcurrentShips); //How fill is the resource

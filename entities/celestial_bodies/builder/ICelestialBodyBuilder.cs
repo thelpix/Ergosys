@@ -7,6 +7,6 @@ public interface ICelestialBodyBuilder
     void BuildOrbit();
     void BuildPhysicalProperties();
     void BuildResources();
-    void BuildChildren();
+    void BuildChildren(int randomMaxCelestialBodies);
     void BuildColony();
 }

@@ -39,7 +39,7 @@ public class CelestialBodyBuilder : ICelestialBodyBuilder
         // Implementation for building resources of the main star
     }
 
-    public void BuildChildren()
+    public void BuildChildren(int randomMaxCelestialBodies)
     {
         // Implementation for building children of the main star
     }

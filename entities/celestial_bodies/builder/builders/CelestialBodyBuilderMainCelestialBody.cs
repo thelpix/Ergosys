@@ -1,4 +1,5 @@
 using System;
+using Godot;
 
 //concrete class that builds a celestial body for a solar system which is the main star.
 public class CelestialBodyBuilderMainStar : ICelestialBodyBuilder
@@ -29,27 +30,40 @@ public class CelestialBodyBuilderMainStar : ICelestialBodyBuilder
     }
     public void BuildIdentifiers()
     {
-        // Implementation for building identifiers of the main star
+        _celestialBody.Name = "Main Star"; //temporal
+        _celestialBody.Id = Guid.NewGuid().ToString();
     }
 
     public void BuildOrbit()
     {
-        // Implementation for building orbit of the main star
+        _celestialBody.SetOrbit(null);
     }
 
     public void BuildPhysicalProperties()
     {
         // Implementation for building physical properties of the main star
+        _celestialBody.Speed = 0;
+        _celestialBody.Mass = 1000; //temporal
+        _celestialBody.Radius = 100; //temporal
+        _celestialBody.GravitationalField = 100; //temporal
+        _celestialBody.RotationAngle = 0;
+        _celestialBody.RotationSpeed = 0.1f; //temporal
     }
 
     public void BuildResources()
     {
         // Implementation for building resources of the main star
+        //_celestialBody.Resources = new ResourceDeposit.ResourceType[0];
     }
 
-    public void BuildChildren()
+    public void BuildChildren(int randomMaxCelestialBodies)
     {
-        // Implementation for building children of the main star
+        //build children slots for in a future buildPlanets()
+        _celestialBody.Children = new Node2D[randomMaxCelestialBodies];
+        for (int i = 0; i < randomMaxCelestialBodies; i++)
+        {
+            _celestialBody.Children[i] = null; // initialize with null, will be filled with planets later
+        }
     }
 
     public void BuildColony()

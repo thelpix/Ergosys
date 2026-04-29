@@ -1,50 +1,23 @@
 using Godot;
 using System;
 
-// TODO: Separate between the roles of a CelestialBody. Examples: {Extractive, Colonized, Ruined, Etc...}. would work similar to state machines
-/*
-    A ExtractiveBody should save the resources data and how it's being extracted
-    A ColonizedBody should save the factionData (which faction, how much stockpile, how it's production rate, etc) and their methods
-    A RuinedBody should be a colonizedBody abandoned, being useless
-*/
-
 [GlobalClass]
 public partial class CelestialBody : Node2D
 {
     // ATTRIBUTES
     [ExportGroup("Identifiers")]
-    [Export] public int Id;
+    [Export] public string Id = Guid.NewGuid().ToString();
     [Export] public new string Name;
     [Export] public CelestialBodyType Type;
     [Export] public Node2D Parent; // the parent body this is orbiting around, null if none
-    [Export] public Node2D[] Satellites; // the bodies orbiting around this, empty if non
+    [Export] public Node2D[] Children; // the bodies orbiting around this, empty if non
     public CelestialBodyState CurrentState; // the current state of the body, it will determine its behavior and interactions
     private GenericFSM<String> FSM = new GenericFSM<String>();
-    private Colony Colony = null;
     private Temperature temperature;
-
-    // This orbit has to be on their own object to separate logic
-    [ExportGroup("Orbit")]
-    [Export] public new Vector2 Position;
-    [Export] public float OrbitRadius;
-    [Export] public float OrbitAngle;
-    [Export] public float OrbitRotationSpeed;
-    [Export] public int OrbitingBodyId; // the id of the body this is orbiting around, -1 if none
-
+    private Colony Colony = null;
+    private Orbit Orbit; // the orbit of this body, it will determine its position and movement around its parent
+    private Resource[] Resources;
     //Children that works as the sprite2D of this object (Node2D)
-
-    // physical properties, modified by CelestialBodyType
-    [ExportGroup("Physical Properties")]
-    [Export] public float Speed; 
-    [Export] public float Mass;
-    [Export] public float Radius;
-    [Export] public float GravitationalField; // it could serve as a "hazard" factor
-    [Export] public float RotationAngle;
-    [Export] public float RotationSpeed;
-
-    //All planets can have resources
-    [ExportGroup("Resources Data")]
-    [Export]private ResourceDeposit[] Resources;
 
     public override void _Ready()
     {
@@ -77,6 +50,11 @@ public partial class CelestialBody : Node2D
     }
     //Constructor that gets called by a CelestialBodyFactory
     
+    //setter
+    public void SetOrbit(Orbit orbit)
+    {
+        Orbit = orbit;
+    }
 
 
 

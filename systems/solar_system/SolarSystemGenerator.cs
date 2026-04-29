@@ -35,8 +35,8 @@ public class SolarSystemGenerator
         int RandomMaxCelestialBodies = r.Next(2, MaxCelestialBodies);
         
         var builder = new SolarSystemBuilder();
-        builder.BuildMainBody(RandomSeed);
-            //.BuildZoneMap(/* temperature from main body */)
+        builder.BuildMainBody(RandomSeed, RandomMaxCelestialBodies);
+        builder.BuildZoneMap();
         builder.BuildPlanets(RandomMaxCelestialBodies, RandomSeed, MaxSatellitesPerPlanet);
         builder.BuildSatellites();
         return builder.GetResult();
